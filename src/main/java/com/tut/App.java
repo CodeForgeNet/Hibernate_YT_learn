@@ -1,5 +1,8 @@
 package com.tut;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -26,21 +29,30 @@ public class App
         
 //        Creating Student object
         Student st = new Student();
-        st.setId(103);
-        st.setName("Rin");
-        st.setCity("LEAFvlg");
+        st.setId(107);
+        st.setName("RinNOhara");
+        st.setCity("LeafVlgers");
         
         System.out.println(st);
         
         
 //        Creating Address object
         Address ad = new Address();
-        ad.setStreet("street1");
-        ad.setCity("delhi");
+        ad.setStreet("street4");
+        ad.setCity("sector19");
         ad.setOpen(true);
         ad.setAddedDate(new Date());
-        ad.setX(123.456);  // This value didn't go to DB bcoz we ignore the column 
+        ad.setX(123.456);  // This value didn't go to DB bcoz we ignore the column
         
+//        Reading Image
+        try {
+			FileInputStream fis = new FileInputStream("src/main/java/pic.png");
+			byte[] data = new byte[fis.available()];
+			fis.read(data); 
+			ad.setImg(data);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
         
         
         Session session = sf.openSession();

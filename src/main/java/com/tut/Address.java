@@ -31,7 +31,7 @@ public class Address {
 	@Column(length=50,name="Street")
 	private String street;
 	
-	@Column(name="Street",length=100)
+	@Column(name="City",length=100)
 	private String city;
 	 
 	private boolean isOpen;
@@ -44,6 +44,7 @@ public class Address {
 	private Date addedDate;
 	
 	@Lob
+	@Column(name = "img", columnDefinition="MEDIUMBLOB")
 	private byte[] img;
 	
 

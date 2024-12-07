@@ -19,6 +19,10 @@ public class Student {
 	private String city;
 //	After providing @id go to hibernate.cfg.xml file for mapping the class.
 	
+//	After FetchDemo ..
+//	To map another class fields in other class table using @Embaddable
+	private Certificate certi;
+	
 	
 
 }
