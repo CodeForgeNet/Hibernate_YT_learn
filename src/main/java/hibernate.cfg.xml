@@ -10,14 +10,16 @@
 		<property name="connection.username">root</property>
 		<property name="connection.password">karan123</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-		<!-- <property name="hbm2ddl.auto">update</property> -->
-		<property name="hbm2ddl.auto">create</property>
+		<!-- <property name="hbm2ddl.auto">update</property> --> <!-- Ek baar table create ho gyi hai aur fir dubara table nahi banana hai purane wle ko hta ke then we have to use 'update' -->
+		<property name="hbm2ddl.auto">create</property> <!-- If we want to create new table and drop the old table then we have to use 'create' -->
 		<property name="show_sql">true</property>
 		<!-- <property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property> -->
 
 		<mapping class="com.tut.Student" /> <!-- for annotation -->
 		<mapping class="com.tut.Address" />
+		<mapping class="com.map.Question" />
+		<mapping class="com.map.Answer" />
 
 	</session-factory>
 </hibernate-configuration>

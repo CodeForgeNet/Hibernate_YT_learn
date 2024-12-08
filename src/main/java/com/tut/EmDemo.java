@@ -45,10 +45,10 @@ public class EmDemo {
         s.save(st1);
         s.save(st2);
         
-        ts.commit(); // This is to insert data or save in table.(in video it didn't mention ).
         
         
         
+        ts.commit();
         s.close();
         sf.close();
 	}
