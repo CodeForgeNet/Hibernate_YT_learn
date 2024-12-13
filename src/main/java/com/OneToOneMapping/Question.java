@@ -1,8 +1,11 @@
-package com.map;
+package com.OneToOneMapping;
+
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +22,13 @@ public class Question {
 	private int questionId;
 	private String questions;
 	
+
+//	Start -> One to One 
 	@OneToOne
+	@JoinColumn(name="a_id")
 	private Answer answer;
+//	End -> One to One
+	
+	
 	
 }

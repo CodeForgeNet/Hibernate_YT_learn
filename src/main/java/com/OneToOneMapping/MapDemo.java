@@ -1,4 +1,4 @@
-package com.map;
+package com.OneToOneMapping;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,14 +11,6 @@ public class MapDemo {
 		Configuration cfg = new Configuration();
 		cfg.configure("hibernate.cfg.xml");
 		SessionFactory sf = cfg.buildSessionFactory();
-		
-		
-//		Session
-		Session s = sf.openSession();
-		
-//		Transaction begin
-		Transaction ts = s.beginTransaction();
-		
 		
 //		Creating question
 		Question q1 = new Question();
@@ -33,6 +25,9 @@ public class MapDemo {
 		
 		q1.setAnswer(ans1); //Setting answer in question table.
 		
+//		After making bidirectional oneToOne mapping
+		ans1.setQ(q1);
+		
 		
 		
 //		Creating question
@@ -46,20 +41,40 @@ public class MapDemo {
 		ans2.setAnswerId(344);
 		ans2.setAnswers("API to work with objects in java.");
 		
-		q1.setAnswer(ans2); //Setting answer in question table.
+		q2.setAnswer(ans2); //Setting answer in question table.
+		
+//		After making bidirectional oneToOne mapping
+		ans1.setQ(q2);
 		
 		
 		
-
+//		Session
+		Session s = sf.openSession();
+		
+//		Transaction begin
+		Transaction ts = s.beginTransaction();
 		
 		
 //		save
+		 s.save(ans1);	// Save ans1 before using its reference in q1
 		 s.save(q1);
+		 s.save(ans2);	// Save ans2 before using its reference in q2
 		 s.save(q2);
 		
 		
 		
 		ts.commit();
+		
+		
+//		Data Fetch (after applying mapped by in answer class)
+		Question disQ = (Question)s.get(Question.class, 1212);
+		System.out.println(disQ.getQuestions());
+		System.out.println(disQ.getAnswer().getAnswers());
+		
+		
+		
+		
+		
 		s.close();
 		sf.close();
 	}
