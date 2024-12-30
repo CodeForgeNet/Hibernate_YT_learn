@@ -18,8 +18,8 @@
 
 		<mapping class="com.tut.Student" /> <!-- for annotation -->
 		<mapping class="com.tut.Address" />
-		<mapping class="com.map.Question" />
-		<mapping class="com.map.Answer" />
+		<mapping class="com.OneToManyMapping.Question2" />
+		<mapping class="com.OneToManyMapping.Answer2" />
 
 	</session-factory>
 </hibernate-configuration>
